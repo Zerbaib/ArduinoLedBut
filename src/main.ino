@@ -2,7 +2,7 @@ const int led1 = 2;
 const int led2 = 3;
 const int button = 4;
 int buttonState;
-inf buttonLongPress;
+int buttonLongPress;
 int lastLed = led1;
 
 void setup() {
