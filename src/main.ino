@@ -17,35 +17,15 @@ void setup() {
 void loop() {
     buttonState = digitalRead(button);
 
-    if(buttonState != HIGH) {
-        buttonLongPress = 1;
+    if (buttonState != HIGH) {
+        buttonLongPress = true;
     } else {
-        buttonLongPress = 0;
-    }
-
-    if lastLed == led1 {
-        futureLed = led2;
-    } else {
-        futureLed = led1;
-    }
-
-    if (buttonLongPress == 1) {
-        digitalWrite(lastLed, LOW);
-        digitalWrite(futureLed, HIGH);
-        lastLed = futureLed;
-    }
-
-
-/*    
-    if (buttonLongPress == 1) {
-        if (lastLed == led1) {
-            digitalWrite(led1, LOW);
-            digitalWrite(led2, HIGH);
-            lastLed = led2;
-        } else {
-            digitalWrite(led2, LOW);
-            digitalWrite(led1, HIGH);
-            lastLed = led1;
+        if (buttonLongPress) {
+            buttonLongPress = false;
+            futureLed = lastLed == led1 ? led2 : led1;
+            digitalWrite(lastLed, LOW);
+            digitalWrite(futureLed, HIGH);
+            lastLed = futureLed;
         }
-    }*/
+    }
 }
